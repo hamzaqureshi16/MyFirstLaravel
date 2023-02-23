@@ -11,7 +11,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke()
     {
         return view('HomeView');
     }
@@ -49,7 +49,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('HomeView',['id'=>$id]);
     }
 
     /**
