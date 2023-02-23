@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',PostController::class);
 Route::get('/about',[PostController::class,'about']);
-Route::get('/home/{id}',[PostController::class,'show']);
+Route::get('/home/{id}',[PostController::class,'show'])->where('id',"[0-9]+");
 
 
 //Post
