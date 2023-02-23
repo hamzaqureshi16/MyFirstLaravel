@@ -17,7 +17,7 @@ class PostController extends Controller
     }
     public function about()
     {
-        return view('AboutView');
+        return view('components.about');
     }
 
     /**

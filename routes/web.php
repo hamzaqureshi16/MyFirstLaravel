@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',PostController::class);
-Route::get('/about',[PostController::class,'about']);
+Route::view('','index');
+//Route::get('/',PostController::class);
+Route::get('/about',[PostController::class,'about'])->name('about');
 Route::get('/home/{id}',[PostController::class,'show'])->where('id',"[0-9]+");
 
 
