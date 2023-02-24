@@ -29,6 +29,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('form') }}">Form</a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('checkage') }}" class="nav-link">Check age</a>
+            </li>
           </ul>
         </div>
       </nav>
