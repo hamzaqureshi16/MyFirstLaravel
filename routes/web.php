@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\form;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Route;
@@ -17,37 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('','index');
-//Route::get('/',PostController::class);
-Route::get('/about',[PostController::class,'about'])->name('about');
-Route::get('/home/{id}',[PostController::class,'show'])->where('id',"[0-9]+");
 
-
-//Post
-Route::get('/post',[PostController::class,'create']);
-Route::post('/post',[PostController::class,'store']);
-
-Route::get('/post/{id}/edit',[PostController::class,'edit']);
-Route::patch('/post/{id}',[PostController::class,'update']);
-
-Route::delete('/post/{id}',[PostController::class,'destroy']);
-
-//for mutiple reqs in the same line
-
-Route::match(['get','post'],'/post/{id}/edit',[PostController::class,'edit']);
 
 //return view with data as well
-//Route::view('/',"HomeView",["name"=>"hamza"]);
-
-
-// Route::get('/', function () {
-//     return [PostController::class,'index'];
-//     return view('HomeView');
-// });
-
-// Route::get('/about', function () {
-//     return view('welcome');
-// });
-
-// //Route::get('/',[PostController::class,'index']);
-// Route::resource('user', PostController::class);
+ 
+Route::get('/',[PostController::class,'__invoke']);
+Route::get('/about',[PostController::class,'about'])->name('about');
+Route::get('/home/{id}',[PostController::class,'show']);
+Route::get('/form',[form::class,'__invoke'])->name('form');

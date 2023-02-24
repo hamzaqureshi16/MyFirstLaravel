@@ -11,9 +11,11 @@ class Navbar extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $madeby;
+    
+    public function __construct($send = 'USER')
     {
-        //
+        $this->madeby = $send;
     }
 
     /**

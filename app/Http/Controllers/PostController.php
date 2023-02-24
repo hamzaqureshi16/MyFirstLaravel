@@ -11,13 +11,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $name;
     public function __invoke()
     {
-        return view('HomeView');
+        
+        $this->name="Hello World";
+        return view('index',['name'=>$this->name]);
     }
     public function about()
     {
-        return view('components.about');
+        return view('components.about',['name'=>$this->name]);
     }
 
     /**
@@ -49,7 +52,7 @@ class PostController extends Controller
      */
     public function show($id )
     {
-        return view('HomeView',['id'=>$id]);
+        return view('index',['id'=>$id,'name'=>$this->name]);
     }
 
     /**
