@@ -9,4 +9,14 @@ class form extends Controller
     public function __invoke(){
         return view('components.form');
     }
+
+    public function sendData(Request $req){
+        
+        $req->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'password'=>'required|min:5|max:10'
+        ]);
+        return $req->input('email');
+    }
 }

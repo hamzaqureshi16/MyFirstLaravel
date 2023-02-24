@@ -11,7 +11,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $name;
+    public $name='';
     public function __invoke()
     {
         
@@ -50,9 +50,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id )
+    public function show($id ,$name)
     {
-        return view('index',['id'=>$id,'name'=>$this->name]);
+        return view('index',['id'=>$id,'name'=>$name]);
     }
 
     /**

@@ -42,7 +42,8 @@
     function sendID(){
       var id = document.getElementById('id').value;
       document.getElementById('id').value = '';
-      window.location.href = '/home/' + id; 
+      
+      window.location.href = '/home/' + id+'/'+@json($name); 
     }
   </script> 
 

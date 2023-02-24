@@ -24,7 +24,7 @@
               <a href="/form" class="nav-link"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">{{ $madeby }}</a>
+              <a class="nav-link" href="#" >{{ $madeby }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('form') }}">Form</a>

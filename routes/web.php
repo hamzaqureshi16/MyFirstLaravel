@@ -24,5 +24,11 @@ use Illuminate\Support\Facades\Route;
  
 Route::get('/',[PostController::class,'__invoke']);
 Route::get('/about',[PostController::class,'about'])->name('about');
-Route::get('/home/{id}',[PostController::class,'show']);
+
+Route::get('/home/{id}/{name}',[PostController::class,'show']);
+
+
+
+//form related routes
+Route::post('submit',[form::class,'sendData']);
 Route::get('/form',[form::class,'__invoke'])->name('form');

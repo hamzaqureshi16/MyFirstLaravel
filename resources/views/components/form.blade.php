@@ -30,13 +30,13 @@
 
     </style>
 
-    <form action="/home" method="POST" class="center" autocomplete="off">
+    <form action="/submit" method="POST" class="center" autocomplete="off" onsubmit="submit()">
         @csrf
         <input type="text" name="name" class="rounded" placeholder="Enter your name">
         <br>
-        <input type="email" name="email" class="rounded" placeholder="Enter your email">
+        <input type="email" name="email" class="rounded" placeholder="Enter your email"  >
         <br>
-        <input type="password" name="password" class="rounded" placeholder="Enter your password">
+        <input type="password" name="password" class="rounded" placeholder="Enter your password"   >
         <br>
         <input type="submit" value="Submit" class="rounded btn btn-success">
     </form>
