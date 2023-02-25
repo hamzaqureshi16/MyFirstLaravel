@@ -13,6 +13,21 @@
     text-align: center;
 
    }
+   
+    label{
+         font-size: 20px;
+         font-weight: bold;
+    }
+    input{
+        width: 100%;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .bg-primary{
+        background-color: #007bff;
+    }
+
 
 </style>
 <body class="bg-primary">
