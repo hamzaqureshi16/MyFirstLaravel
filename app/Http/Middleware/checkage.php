@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Carbon\Exceptions\EndLessPeriodException;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,13 @@ class checkage
     public function handle(Request $request, Closure $next)
     {
       if($request->age && $request->age < 18){
-        return redirect('home');
+         return redirect('inaccesible');
       }
+      //else if
+      else if($request->age && $request->age >= 18){
+          return redirect('userpage');
+      }
+      
+      return $next($request);
     }
 }

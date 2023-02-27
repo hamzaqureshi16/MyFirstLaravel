@@ -6,6 +6,8 @@ use App\Http\Controllers\form;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RequestController;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +34,10 @@ Route::get('/home/{id}/{name}',[PostController::class,'show']);
 //form related routes
 Route::post('submit',[form::class,'sendData']);
 Route::get('/form',[form::class,'__invoke'])->name('form');
-Route::view('checkage','components.checkage')->name('checkage');
+Route::view('inaccesible','components.inaccesible')->name('inaccesible');
+Route::view('userpage','components.userpage')->name('userpage');
+Route::view('checkage','components.checkage')->name('checkage')->middleware('age');
+Route::get("request",[RequestController::class,'__invoke'])->name('request');
+
+//sending data directly instead of using controller
+// Route::view('request', 'components.data',['data'=>Http::get("https://reqres.in/api/users?page=2")['data']])->name('request');

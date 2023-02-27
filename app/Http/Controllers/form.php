@@ -15,8 +15,9 @@ class form extends Controller
         $req->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'password'=>'required|min:5|max:10'
+            'password'=>'required|min:8'
         ]);
+        
         return $req->input('email');
     }
 }

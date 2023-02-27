@@ -32,6 +32,9 @@
             <li class="nav-item">
               <a href="{{ route('checkage') }}" class="nav-link">Check age</a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('request') }}" class="nav-link">Request</a>
+            </li>
           </ul>
         </div>
       </nav>
