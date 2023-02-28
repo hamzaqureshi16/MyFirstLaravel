@@ -8,6 +8,7 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\usercontroller;
 use Illuminate\Support\Facades\Http;
 
 /*
@@ -27,13 +28,14 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/',[PostController::class,'__invoke'])->name('home');
 Route::get('/about',[PostController::class,'about'])->name('about');
-
 Route::get('/home/{id}/{name}',[PostController::class,'show']);
 
+Route::post('registeruser',[usercontroller::class,"save"])->name('registeruser');
 
 
 //form related routes
-Route::post('submit',[form::class,'sendData']);
+Route::post('submit',[form::class,'sendData'])->name('submit');
+Route::view('register','components.register')->name('register');
 Route::get('/form',[form::class,'__invoke'])->name('form');
 
 Route::get('login',function(){

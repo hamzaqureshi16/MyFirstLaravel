@@ -31,14 +31,20 @@
             <li class="nav-item">
               <a href="{{ route('request') }}" class="nav-link">View Data</a>
             </li>
-            <li class="nav-item">@if(session()->has('user'))
+            @if(session()->has('user'))
+            <li class="nav-item">
               <a href='{{ route('logout') }}' class="nav-link btn btn-danger rounded">Logout</a>
-             
+            </li>
             @else
-              <a href="{{ route('login') }}" class="nav-link btn btn-danger rounded">Login</a>
+            <li class="nav-item">
+              <a href="{{ route('login') }}" class="nav-link btn btn-danger rounded m-1">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('register') }}" class="nav-link btn btn-success rounded m-1">Register</a>
+            </li>
             @endif
             
-            </li>
+            
             
           </ul>
         </div>
