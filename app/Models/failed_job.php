@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class failed_job extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
-    protected $fillable = [
-        'uuid',
-        'connection',
-        'queue',
-        'payload',
-        'exception',
-        'failed_at',
-    ];
+     
 }
