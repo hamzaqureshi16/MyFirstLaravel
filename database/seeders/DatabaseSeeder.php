@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         failed_job::factory(10)->create();
+        $this->call([userseeder::class]);
     }
 }
