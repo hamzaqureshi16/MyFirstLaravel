@@ -11,8 +11,7 @@
         transform: translate(-50%, -50%);
     }
    </style>
-<body class="bg-primary">
+   <body class="bg-dark">
     <a href={{ route('home') }} class="nav-link"><button  class="btn btn-success m-1 rounded bi bi-arrow-90deg-left" > Go Back Home </button></a>
-    <h1 class="text-center center">Inaccesible page</h1>
-</body>
-
+    <h1 class="center text-light fs-1">The requester URL does not exist</h1>
+   </body>

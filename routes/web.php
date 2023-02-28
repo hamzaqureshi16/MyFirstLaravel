@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\fallback;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\form;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -51,6 +52,12 @@ Route::get('logout',function(){
     session()->forget('user');
     return redirect()->route('home');
 })->name('logout');
+
+Route::get('Db',[form::class,'getData']);
+
+Route::fallback(fallback::class);
+
+
 
 //sending data directly instead of using controller
 // Route::view('request', 'components.data',['data'=>Http::get("https://reqres.in/api/users?page=2")['data']])->name('request');

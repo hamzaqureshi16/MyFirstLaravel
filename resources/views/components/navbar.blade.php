@@ -29,7 +29,7 @@
               <a href="{{ route('checkage') }}" class="nav-link">Check age</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('request') }}" class="nav-link">Request</a>
+              <a href="{{ route('request') }}" class="nav-link">View Data</a>
             </li>
             <li class="nav-item">@if(session()->has('user'))
               <a href='{{ route('logout') }}' class="nav-link btn btn-danger rounded">Logout</a>

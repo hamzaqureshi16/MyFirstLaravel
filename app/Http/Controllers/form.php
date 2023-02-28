@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class form extends Controller
 {
@@ -20,7 +20,11 @@ class form extends Controller
         ]);
         $req->session()->put('user',$req->input('name'));
         //remove submit from the url
-        return redirect()->route('home',['name'=>session('user')]);
+        return redirect()->route('home',['user'=>session('user')]);
+    }
+
+    public function getData(){
+        return DB::select("select * from users");
     }
 
   
