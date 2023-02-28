@@ -4,8 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./CSS/main.css">
-   
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
         <img src="https://image.freepik.com/free-vector/cool-monkey-logo-design-vector-illustrator_56473-421.jpg" width="50" height="50" class="m-2 rounded-circle d-inline-block align-top" alt="">
         <a class="navbar-brand font-weight-bold " href="#">Monkey Box</a>
@@ -20,23 +19,36 @@
             <li class="nav-item">
               <a class="nav-link" href={{ route('about') }}>About</a>
             </li>
+            
+              @if(session()->has('user'))
             <li class="nav-item">
-              <a href="/form" class="nav-link"></a>
+              <a class="nav-link"  ><b>{{ session('user') }}</b></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" >{{ $madeby }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('form') }}">Form</a>
-            </li>
+              @endif
             <li class="nav-item">
               <a href="{{ route('checkage') }}" class="nav-link">Check age</a>
             </li>
             <li class="nav-item">
               <a href="{{ route('request') }}" class="nav-link">Request</a>
             </li>
+            <li class="nav-item">@if(session()->has('user'))
+              <a href='{{ route('logout') }}' class="nav-link btn btn-danger rounded">Logout</a>
+             
+            @else
+              <a href="{{ route('login') }}" class="nav-link btn btn-danger rounded">Login</a>
+            @endif
+            
+            </li>
+            
           </ul>
         </div>
       </nav>
     <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
 </div>
+<script>
+  function logout(){
+    {{ session()->flush() }}
+    
+    window.location.href = '/form';
+  }
+</script>

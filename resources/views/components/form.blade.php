@@ -39,6 +39,9 @@
         }
 
     </style>
+
+  
+    
     <a href={{ route('home') }} class="nav-link"><button  class="btn btn-success m-1 rounded bi bi-arrow-90deg-left" > Go Back Home </button></a>
     <form action="/submit" method="POST" class="center" autocomplete="off" onsubmit="submit()">
         @csrf

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Http;
 
 
 //return view with data as well
- 
+
 Route::get('/',[PostController::class,'__invoke'])->name('home');
 Route::get('/about',[PostController::class,'about'])->name('about');
 
@@ -34,10 +34,23 @@ Route::get('/home/{id}/{name}',[PostController::class,'show']);
 //form related routes
 Route::post('submit',[form::class,'sendData']);
 Route::get('/form',[form::class,'__invoke'])->name('form');
+
+Route::get('login',function(){
+    
+    if(session()->has('user')){
+        return redirect()->route('home');
+    }
+    return redirect()->route('form');
+})->name('login');
 Route::view('inaccesible','components.inaccesible')->name('inaccesible');
 Route::view('userpage','components.userpage')->name('userpage');
 Route::view('checkage','components.checkage')->name('checkage')->middleware('age');
 Route::get("request",[RequestController::class,'__invoke'])->name('request');
+
+Route::get('logout',function(){
+    session()->forget('user');
+    return redirect()->route('home');
+})->name('logout');
 
 //sending data directly instead of using controller
 // Route::view('request', 'components.data',['data'=>Http::get("https://reqres.in/api/users?page=2")['data']])->name('request');

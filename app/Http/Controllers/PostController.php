@@ -11,16 +11,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $name='';
+    public $name;
     public function __invoke()
     {
-        
-        $this->name="Hello World";
-        return view('index',['name'=>$this->name]);
+        return view('index');
     }
+
     public function about()
     {
-        return view('components.about',['name'=>$this->name]);
+        return view('components.about');
     }
 
     /**

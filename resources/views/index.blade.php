@@ -1,11 +1,8 @@
-<x-navbar send="{{ $name }}"/>
+<x-navbar send="{{ session('user') }}"/>
 @include('components.home');
 
 @csrf
 
-<script>
-    let name = @json($name);
-    console.log(name);
-</script>
+
 
  

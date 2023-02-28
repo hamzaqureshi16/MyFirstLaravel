@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class form extends Controller
 {
     public function __invoke(){
@@ -17,7 +18,10 @@ class form extends Controller
             'email'=>'required|email',
             'password'=>'required|min:8'
         ]);
-        
-        return $req->input('email');
+        $req->session()->put('user',$req->input('name'));
+        //remove submit from the url
+        return redirect()->route('home',['name'=>session('user')]);
     }
+
+  
 }
