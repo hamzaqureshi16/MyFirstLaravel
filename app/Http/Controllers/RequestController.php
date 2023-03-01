@@ -12,8 +12,13 @@ class RequestController extends Controller
         // if you want to use query build you have to do this
         //$data = DB::select('select * from users');
         
-        //but i prefer using the model
-        return view('components.data',['data'=>user::all()]);
+
+        //get data using chaining
+        $data  = DB::table('users')->select('id','first_name','last_name','avatar','email')->get();
+
+        //but I prefer using the model
+        //return view('components.data',['data'=>user::all()]);
+        return view('components.data',['data'=>$data]);
     }
 
     public function getProfile($id){

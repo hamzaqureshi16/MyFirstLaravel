@@ -5,13 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class usercontroller extends Controller
 {
+    public function toupdate($id){
+        $user = DB::table('users')->select('first_name','last_name','email')->where('id',$id)->get();
+        return view('components.updatepage', ['user' => $user]);
+
+
+    }
+
+    public function update(){
+
+    }
     public function passreset(Request $request){
         $request->validate([
             'email'=>'required|email',
-            'new_password'=>'required|min:8',
+            'new_password'=>'required',
             'first_name'=>'required'
         ]);
 
@@ -36,7 +47,7 @@ class usercontroller extends Controller
         $req->validate([
             'first_name'=>'required',
             'email'=>'required|email',
-            'password'=>'required|min:8'
+            'password'=>'required'
         ]);
 
         $user = User::where('email', $req->email)
@@ -51,12 +62,14 @@ class usercontroller extends Controller
 
     }
 
+     
+
     public function register(Request $request){
         
         $request->validate([
             'first_name'=>'required',
             'email'=>'required|email',
-            'password'=>'required|min:8',
+            'password'=>'required',
             'password_confirmation'=>'required|min:8|same:password',
             'last_name'=>'required',
             'avatar'=>'required|url'

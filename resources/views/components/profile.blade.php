@@ -63,5 +63,8 @@
                 <label for="email">{{$user->email}}</label>
             </div>
         </div>
+        <div class="row">
+            <a href="/updatepage/{{ $user->id }}" class="nav-link"><button class="btn btn-warning rounded">Update Profile</button></a> 
+        </div>
 
 </body>   
