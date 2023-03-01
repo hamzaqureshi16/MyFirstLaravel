@@ -56,6 +56,9 @@ Route::get('logout',function(){
 })->name('logout');
 
 Route::get('Db',[form::class,'getData']);
+Route::get('/profile/{id}', function ($id) {
+    return id;
+});
 
 Route::fallback(fallback::class);
 
