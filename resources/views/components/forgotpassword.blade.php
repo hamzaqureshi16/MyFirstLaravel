@@ -4,7 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">  
-    <title>Form</title>
+    <title>Forgot Password</title>
     <style>
         form{
             position: absolute;
@@ -32,35 +32,32 @@
         form input[type=submit]:hover{
             background-color: #000;
             color: #fff;
+        }
+        form input[type=submit]:hover{
+            background-color: #000;
+            color: #fff;
+        }
+        body{
+            background-color: #000;
         } 
+
         form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus{
             border: 2px solid #000;
             outline: none;
         }
 
     </style>
-
-  
-    
-    <a href={{ route('home') }} class="nav-link"><button  class="btn btn-success m-1 rounded bi bi-arrow-90deg-left" > Go Back Home </button></a>
-    <form action="/submit" method="POST" class="center" autocomplete="off" onsubmit="submit()">
-        @csrf
-        <input type="text" name="first_name" class="rounded" placeholder="Enter your First name">
-        <br>
-        @error('name')<span class="bg-danger rounded">{{ $message }}</span> @enderror
-        <br>
-        <input type="email" name="email" class="rounded" placeholder="Enter your email">
-        <br>
-        @error('email')<span class="bg-danger rounded">{{ $message }}</span> @enderror
-        <br>
-        <input type="password" name="password" class="rounded" placeholder="Enter your password">
-        <br>
-        @error('password')<span class="bg-danger rounded">{{ $message }}</span> @enderror
-        <br>
-        <input type="submit" value="Submit" class="rounded btn btn-success">
+    <form action="/passreset" method="POST">
+    @csrf
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" placeholder="enter your email">
+    <br>
+    <label for="first_name">First Name: </label>
+    <input type="text" name="first_name" id="first_name" placeholder="First Name" class="rounded">
+    <br>
+    <label for="new_password">New Password</label>
+    <input type="password" name="new_password" id="new_password" placeholder="New Password">
+    <br>
+    <input type="submit" value="Reset Password" class="rounded btn btn-success">
     </form>
-
-    
-    <a href={{ route('forgot') }} class="nav-link"><button  class="btn btn-info m-1 rounded " > Forgot Password </button></a>
-
 </body>

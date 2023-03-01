@@ -30,11 +30,11 @@ Route::get('/',[PostController::class,'__invoke'])->name('home');
 Route::get('/about',[PostController::class,'about'])->name('about');
 Route::get('/home/{id}/{name}',[PostController::class,'show']);
 
-Route::post('registeruser',[usercontroller::class,"save"])->name('registeruser');
+Route::post('registeruser',[usercontroller::class,"register"])->name('registeruser');
 
 
 //form related routes
-Route::post('submit',[form::class,'sendData'])->name('submit');
+Route::post('submit',[usercontroller::class,'verify'])->name('submit');
 Route::view('register','components.register')->name('register');
 Route::get('/form',[form::class,'__invoke'])->name('form');
 
@@ -56,10 +56,9 @@ Route::get('logout',function(){
 })->name('logout');
 
 Route::get('Db',[form::class,'getData']);
-Route::get('/profile/{id}', function ($id) {
-    return id;
-});
-
+Route::get('/profile/{id}',[RequestController::class,'getprofile']);
+Route::view('forgot', 'components.forgotpassword')->name('forgot');
+Route::post('passreset',[usercontroller::class,'passreset'])->name('reset');
 Route::fallback(fallback::class);
 
 

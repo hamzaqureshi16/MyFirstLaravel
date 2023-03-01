@@ -4,28 +4,45 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">  
 <style>
-    .center
-        {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        }
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    img {
+        max-width: 200px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        border: 5px solid #fff;
+
+    }
+
+    label {
+        font-size: 18px;
+        color: #fff;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        
+
+    }
 </style>
 <body class="bg-primary">
+    
     <div class="center container">
+        <h1 class="text-center"><u>Your Profile</u></h1>
         <div class="row">
             <div class="col-4">
-                <img src="{{ $user->avatar }}" alt="avatar">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-4">
-                <label for="email">Phone</label>
-            </div>
-            <div class="col-8">
-                <label for="email">{{$user->phone}}</label>
+                <img src="{{ $user->avatar }}" class="rounded-circle" alt="avatar">
             </div>
         </div>
 

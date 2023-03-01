@@ -16,7 +16,8 @@ class RequestController extends Controller
         return view('components.data',['data'=>user::all()]);
     }
 
-    public function getProfile(Request $request){
-        return view('components.profile',['user'=>user::find($request->id)]);
+    public function getProfile($id){
+        return view('components.profile',['user'=>user::find($id)]);
+
         }
 }

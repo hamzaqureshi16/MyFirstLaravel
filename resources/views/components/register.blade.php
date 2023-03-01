@@ -52,10 +52,11 @@
             width: 100px;
             text-align: right;
         }   
-
-    
-
-        
+        span{
+            color: #fff;
+            font-size: 20px;
+            padding: 5px;
+        }
 
     </style>
 
@@ -65,16 +66,34 @@
     <form method="post" action="{{ route('registeruser') }}" class="center">
         @csrf
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email" required >
+        <br>
+        @error('email')<span class="bg-danger rounded">{{ $message }}</span> @enderror
         <br>
         <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" id="first_name" required>
+        <input type="text" name="first_name" id="first_name" required >
+        <br>
+        @error('first_name')<span class="bg-danger rounded">{{ $message }}</span> @enderror
         <br>
         <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" id="last_name" required>
+        <input type="text" name="last_name" id="last_name" required >
+        <br>
+        @error('last_name')<span class="bg-danger rounded">{{ $message }}</span> @enderror
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password"  required>
+        <br>
+        @error('password')<span class="bg-danger rounded">{{ $message }}</span> @enderror
+        <br>
+        <label for="password_confirmation">Confirm Password:</label>
+        <input type="password" name="password_confirmation" id="password_confirmation" required>
+        <br>
+        @error('password_confirmation')<span class="bg-danger rounded">{{ $message }}</span> @enderror
         <br>
         <label for="avatar">Avatar:</label>
         <input type="url" name="avatar" id="avatar" required>
+        <br>
+        @error('avatar')<span class="bg-danger rounded">{{ $message }}</span> @enderror
         <br>
         <input type="submit" value="Submit" class="btn btn-success">
     </form>

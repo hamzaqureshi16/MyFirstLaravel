@@ -48,7 +48,8 @@
             </tr>
             @foreach ($data as $item )
                 <tr>
-                    <td>{{ $item->id }}</td>
+                    
+                    <td><a href="profile/{{ $item->id }}" class="nav-link text-dark"><u>{{ $item->id }}</u></a></td>
                     <td>{{ $item->first_name }}</td>
                     <td>{{ $item->last_name }}</td>
                     <td>{{ $item->email }}</td>
