@@ -64,7 +64,8 @@
             </div>
         </div>
         <div class="row">
-            <a href="/updatepage/{{ $user->id }}" class="nav-link"><button class="btn btn-warning rounded">Update Profile</button></a> 
+            <a href="/updatepage/{{ $user->id }}" class="nav-link"><button class="btn btn-warning rounded">Update Profile</button></a>
+            <a href="/delete/{{ $user->id }}" class="nav-link"><button class="btn btn-danger rounded">Delete Profile</button></a> 
         </div>
 
 </body>   

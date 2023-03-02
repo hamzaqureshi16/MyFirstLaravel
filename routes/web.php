@@ -60,7 +60,9 @@ Route::get('/profile/{id}',[RequestController::class,'getprofile']);
 Route::view('forgot', 'components.forgotpassword')->name('forgot');
 Route::post('passreset',[usercontroller::class,'passreset'])->name('reset');
 Route::get('updatepage/{id}',[usercontroller::class,'toupdate'])->name('updatepage');
-Route::put('update',[usercontroller::class,'update'])->name('update');
+Route::post('update',[usercontroller::class,'update'])->name('update');
+Route::get('delete/{id}',[usercontroller::class,'delete'])->name('delete');
+
 
 Route::fallback(fallback::class);
 

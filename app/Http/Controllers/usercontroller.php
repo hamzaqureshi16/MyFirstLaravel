@@ -10,13 +10,31 @@ use Illuminate\Support\Facades\DB;
 class usercontroller extends Controller
 {
     public function toupdate($id){
-        $user = DB::table('users')->select('first_name','last_name','email')->where('id',$id)->get();
+        $user = DB::table('users')->select('id','first_name','last_name','email')->where('id',$id)->first();
         return view('components.updatepage', ['user' => $user]);
-
-
     }
 
-    public function update(){
+    public function delete($id){
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('home');
+    }
+
+    public function update(Request $req){
+        $req->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required|email'
+        ]);
+
+        $user = User::find($req->id);
+        $user->first_name = $req->first_name;
+        $user->last_name = $req->last_name;
+        $user->email = $req->email;
+        //update 
+        $user->save();
+
+        return redirect()->route('home');
 
     }
     public function passreset(Request $request){

@@ -53,11 +53,13 @@
     @csrf
     <span>Update Profile</span>
     <br>
-    {{ $user }}
-    <input type="text" name="first_name" placeholder="Name">
+    <input type="text" name="first_name" id="first_name" placeholder="First Name" value="{{ $user->first_name }}">
     <br>
-    <input type="email" name="email" placeholder="Email" >
+    <input type="text" name="last_name" placeholder="Last Name" id="last_name" value="{{ $user->last_name }}">
     <br>
+    <input type="email" name="email" placeholder="Email" value="{{ $user->email }}" >
+    <br>
+    <input type="hidden" name="id" id="id" value='{{ $user->id }}'>
     <input type="submit" value="Update" class="btn-success btn">
     
 </form>
