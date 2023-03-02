@@ -22,7 +22,7 @@ class usercontroller extends Controller
 
 
         //eloquent query
-        User::findOrFail($id)->delete();
+        User::destroy($id);
         return redirect()->route('home');
     }
 
