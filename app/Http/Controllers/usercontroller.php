@@ -10,13 +10,19 @@ use Illuminate\Support\Facades\DB;
 class usercontroller extends Controller
 {
     public function toupdate($id){
-        $user = DB::table('users')->select('id','first_name','last_name','email')->where('id',$id)->first();
-        return view('components.updatepage', ['user' => $user]);
+        // $user = DB::table('users')->select('id','first_name','last_name','email')->where('id',$id)->first();
+
+        //changing queries to eloquent
+         return view('components.updatepage', ['user' => User::select('id','first_name','last_name',"email")->findOrFail($id)]);
     }
 
     public function delete($id){
-        $user = User::find($id);
-        $user->delete();
+        // $user = User::find($id);
+        // $user->delete();
+
+
+        //eloquent query
+        User::findOrFail($id)->delete();
         return redirect()->route('home');
     }
 
@@ -27,13 +33,21 @@ class usercontroller extends Controller
             'email'=>'required|email'
         ]);
 
-        $user = User::find($req->id);
-        $user->first_name = $req->first_name;
-        $user->last_name = $req->last_name;
-        $user->email = $req->email;
+        // $user = User::find($req->id);
+        // $user->first_name = $req->first_name;
+        // $user->last_name = $req->last_name;
+        // $user->email = $req->email;
         //update 
-        $user->save();
+        // $user->save();
 
+        //eloquent query 
+        User::findOrFail($req->id)->update(
+            [
+                'first_name'=>$req->first_name,
+                'last_name'=>$req->last_name,
+                'email'=>$req->email
+            ]
+            );
         return redirect()->route('home');
 
     }
@@ -44,18 +58,18 @@ class usercontroller extends Controller
             'first_name'=>'required'
         ]);
 
+        
         $user = User::where('email', $request->email)
-            ->where('first_name', $request->first_name)
-            ->first();
-        if(!$user){
-            return "Username or password is not matched";
-        }else{
-            $user->password = Hash::make($request->new_password);
-            $user->save();
-            return redirect()->route('login');
-        }
+             ->where('first_name', $request->first_name)
+             ->firstOrFail();
 
-     return redirect('forgot');
+        $user->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+
+        return redirect()->route('login');
+
+        
 
     }
 
@@ -70,13 +84,11 @@ class usercontroller extends Controller
 
         $user = User::where('email', $req->email)
             ->where('first_name', $req->first_name)
-            ->first();
-        if(!$user || !Hash::check($req->password,$user->password)){
-            return "Username or password is not matched";
-        }else{
+            ->firstOrFail();
+         
             $req->session()->put('user',$user->first_name);
             return redirect()->route('home');
-        }
+         
 
     }
 
@@ -93,13 +105,23 @@ class usercontroller extends Controller
             'avatar'=>'required|url'
         ]);
 
-        $user = new User();
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->avatar = $request->avatar;
-        $user->save();
+        // $user = new User();
+        // $user->first_name = $request->first_name;
+        // $user->last_name = $request->last_name;
+        // $user->email = $request->email;
+        // $user->password = Hash::make($request->password);
+        // $user->avatar = $request->avatar;
+        // $user->save();
+
+        // eloquent to save data
+        User::create([
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password),
+            'avatar'=>$request->avatar
+        ]);
+
 
         
         return redirect()->route('home');

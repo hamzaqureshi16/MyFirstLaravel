@@ -37,7 +37,7 @@
     }
 </style>
 <body class="bg-primary">
-    
+    <title>{{ $user->first_name }} {{ $user->last_name }}</title>
     <div class="center container">
         <h1 class="text-center"><u>Your Profile</u></h1>
         <div class="row">
