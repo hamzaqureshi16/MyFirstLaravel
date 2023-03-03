@@ -29,6 +29,10 @@
     tr:hover {
         background-color: #07f417;
     }
+    //style the botton pagination
+    .pagination {
+        display: inline-block;
+    }   
 
 
     
@@ -58,24 +62,11 @@
                 
             @endforeach
         </table>
-        <div class="mx-auto pb-10">
-        
-            <a href="{{ $data->url($data->currentPage()+1) }}" class="nav-link text-dark"><u>{{ $data->currentPage() }}</u></a>
-            
-            @if ($data->onFirstPage())
-                <span class="disabled">Previous</span>
-            @else
-                <a href="{{ $data->previousPageUrl() }}" rel="prev">Previous</a>
-            @endif
-            
-            @if ($data->hasMorePages())
-                <a href="{{ $data->nextPageUrl() }}" rel="next">Next</a>
-            @else
-    
-            @endif
-    
-        </div>
+       
     </div>
-    
+    {{-- <div class="pagination" >
+        
+        {{ $data->links() }}
+   </div> --}}
     
 </body>

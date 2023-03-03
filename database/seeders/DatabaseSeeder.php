@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([RoleSeeder::class]);
+        $this->call([AdminSeeder::class]);
         failed_job::factory(10)->create();
         $this->call([userseeder::class]);
     }

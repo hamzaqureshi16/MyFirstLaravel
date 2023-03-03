@@ -22,7 +22,7 @@ class RequestController extends Controller
         //when you use all you can't use the conditional where so its better to use User::get()
 
         //now using eloquent 
-        return view('components.data',['data'=>User::select('first_name','last_name','id','email','avatar')->paginate(3)]);
+        return view('components.data',['data'=>User::select('first_name','last_name','id','email','avatar')->get()]);
     }
 
     public function getProfile($id){
