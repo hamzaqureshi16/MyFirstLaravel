@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -85,11 +86,17 @@ class usercontroller extends Controller
         $user = User::where('email', $req->email)
             ->where('first_name', $req->first_name)
             ->firstOrFail();
-         
-            $req->session()->put('user',$user->first_name);
+        
+        if(Hash::check($req->password, $user->password)){
+            $req->session()->put('user',$user);
+            if($user->hasRole('admin')){
+                return "yo you're an admin";
+            }
             return redirect()->route('home');
-         
-
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
      
@@ -122,8 +129,6 @@ class usercontroller extends Controller
             'avatar'=>$request->avatar
         ]);
 
-
-        
         return redirect()->route('home');
 
         

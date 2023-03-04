@@ -64,6 +64,8 @@ Route::post('update',[usercontroller::class,'update'])->name('update');
 Route::get('delete/{id}',[usercontroller::class,'delete'])->name('delete');
 
 
+Route::view('admin','admin.index');
+
 Route::fallback(fallback::class);
 
 

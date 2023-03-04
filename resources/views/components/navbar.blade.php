@@ -22,7 +22,7 @@
             
               @if(session()->has('user'))
             <li class="nav-item">
-              <a class="nav-link"  ><b>{{ session('user') }}</b></a>
+              <a class="nav-link"  ><b>{{ session('user')->first_name }}</b></a>
             </li>
               @endif
             <li class="nav-item">
