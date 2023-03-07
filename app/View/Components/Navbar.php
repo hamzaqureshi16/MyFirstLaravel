@@ -11,12 +11,7 @@ class Navbar extends Component
      *
      * @return void
      */
-    public $madeby;
-    
-    public function __construct($send = 'USER')
-    {
-        $this->madeby = $send;
-    }
+
 
     /**
      * Get the view / contents that represent the component.

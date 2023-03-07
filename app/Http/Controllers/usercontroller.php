@@ -91,7 +91,6 @@ class usercontroller extends Controller
         if(Hash::check($req->password, $user->password)){
             $req->session()->put('user',$user);
             return redirect()->route('home');
-            // dd(Session::get('user')->first_name);
         }
         else{
             return redirect()->route('login');
