@@ -1,4 +1,4 @@
-<x-navbar send="{{ session('user') }}"/>
+<x-navbar />
 @include('components.home');
 
 @csrf

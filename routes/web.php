@@ -55,7 +55,7 @@ Route::get('logout',function(){
     return redirect()->route('home');
 })->name('logout');
 
-Route::get('Db',[form::class,'getData']);
+Route::get('Db',[form::class,'getData'])->name('db');
 Route::get('/profile/{id}',[RequestController::class,'getprofile']);
 Route::view('forgot', 'components.forgotpassword')->name('forgot');
 Route::post('passreset',[usercontroller::class,'passreset'])->name('reset');

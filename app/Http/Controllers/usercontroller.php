@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
 class usercontroller extends Controller
@@ -89,10 +90,8 @@ class usercontroller extends Controller
         
         if(Hash::check($req->password, $user->password)){
             $req->session()->put('user',$user);
-            if($user->hasRole('admin')){
-                return "yo you're an admin";
-            }
             return redirect()->route('home');
+            // dd(Session::get('user')->first_name);
         }
         else{
             return redirect()->route('login');

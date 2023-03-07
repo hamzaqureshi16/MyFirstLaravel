@@ -58,6 +58,12 @@
                     <td>{{ $item->last_name }}</td>
                     <td>{{ $item->email }}</td>
                     <td><img src="{{ $item->avatar }}" alt="avatar" class="img-fluid rounded-circle" width="45px" height="45px"></td>
+                    
+                    <td>{{ 
+                 !session()->has('user')
+                 }}</td>
+                        
+                    
                 </tr>
                 
             @endforeach
