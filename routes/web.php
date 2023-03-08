@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\fallback;
 use App\Http\Controllers\PostController;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\usercontroller;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Config;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +32,11 @@ Route::get('/',[PostController::class,'__invoke'])->name('home');
 Route::get('/about',[PostController::class,'about'])->name('about');
 Route::get('/home/{id}/{name}',[PostController::class,'show']);
 
-Route::post('registeruser',[usercontroller::class,"register"])->name('registeruser');
+Route::post('registeruser',[authcontroller::class,"register"])->name('registeruser');
 
 
 //form related routes
-Route::post('submit',[usercontroller::class,'verify'])->name('submit');
+Route::post('submit',[authcontroller::class,'verify'])->name('submit');
 Route::view('register','components.register')->name('register');
 Route::get('/form',[form::class,'__invoke'])->name('form');
 
@@ -51,20 +53,25 @@ Route::view('checkage','components.checkage')->name('checkage')->middleware('age
 Route::get("request",[RequestController::class,'__invoke'])->name('request');
 
 Route::get('logout',function(){
-    session()->forget('user');
+    Config::set('login.isloggedin', "false");
+    Config::set('login.user', null);
     return redirect()->route('home');
 })->name('logout');
 
 Route::get('Db',[form::class,'getData'])->name('db');
 Route::get('/profile/{id}',[RequestController::class,'getprofile']);
 Route::view('forgot', 'components.forgotpassword')->name('forgot');
-Route::post('passreset',[usercontroller::class,'passreset'])->name('reset');
+Route::post('passreset',[authcontroller::class,'passreset'])->name('reset');
 Route::get('updatepage/{id}',[usercontroller::class,'toupdate'])->name('updatepage');
 Route::post('update',[usercontroller::class,'update'])->name('update');
 Route::get('delete/{id}',[usercontroller::class,'delete'])->name('delete');
 
 
 Route::view('admin','admin.index');
+Route::get('adminDelete/{id}',[usercontroller::class,'delete'])->name('adminDelete');
+
+
+Route::get('config',[authcontroller::class,'seeconfig']);
 
 Route::fallback(fallback::class);
 

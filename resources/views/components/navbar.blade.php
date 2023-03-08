@@ -20,11 +20,12 @@
               <a class="nav-link" href={{ route('about') }}>About</a>
             </li>
           
-              @if(session()->has('user'))
+              {{-- @if(config('login.isloggedin')) --}}
             <li class="nav-item">
-              <a class="nav-link"  ><b>{{ Session::get('user')->first_name }}</b></a>
+              <a class="nav-link"  ><b>{{ Config::get('login.isloggedin') }}</b></a>
             </li>
-              @endif
+            {{-- @endif --}}
+              
             <li class="nav-item">
               <a href="{{ route('checkage') }}" class="nav-link">Check age</a>
             </li>

@@ -57,7 +57,10 @@
                     <td>{{ $item->first_name }}</td>
                     <td>{{ $item->last_name }}</td>
                     <td>{{ $item->email }}</td>
-                    <td><img src="{{ $item->avatar }}" alt="avatar" class="img-fluid rounded-circle" width="45px" height="45px"></td>                    
+                    <td><img src="{{ $item->avatar }}" alt="avatar" class="img-fluid rounded-circle" width="45px" height="45px"></td>                  
+                    @if (Config::get('user') != null && Config::get('user')->getRoleNames()->firstOrFail() == "admin")
+                        <td><a href="adminDelete/{{ $item->id }}" class="nav-link text-dark"><button class="btn btn-danger m-1 rounded bi bi-trash"> Delete</button></a></td> 
+                    @endif  
                 </tr>
                 
             @endforeach
