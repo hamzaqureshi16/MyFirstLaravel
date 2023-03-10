@@ -1,3 +1,4 @@
+
 <div>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -20,19 +21,22 @@
               <a class="nav-link" href={{ route('about') }}>About</a>
             </li>
           
-              {{-- @if(config('login.isloggedin')) --}}
+            
+            @if ($name != '')
             <li class="nav-item">
-              <a class="nav-link"  ><b>{{ $user->first_name }}</b></a>
-            </li>
-            {{-- @endif --}}
-              
-            <li class="nav-item">
+              <a class="nav-link"  ><b>{{ $name }}</b></a>
+            </li>    
+            @endif
+            
+            
+            
+             <li class="nav-item">
               <a href="{{ route('checkage') }}" class="nav-link">Check age</a>
             </li>
             <li class="nav-item">
               <a href="{{ route('request') }}" class="nav-link">View Data</a>
             </li>
-            @if(session()->has('user'))
+            @if($name != '')
             <li class="nav-item">
               <a href='{{ route('logout') }}' class="nav-link btn btn-danger rounded">Logout</a>
             </li>
@@ -46,11 +50,11 @@
             @endif
             
             
-            
+             
           </ul>
         </div>
-      </nav>
-    <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
+      </nav> 
+
 </div>
 <script>
   function logout(){

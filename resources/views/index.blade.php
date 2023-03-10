@@ -1,8 +1,4 @@
-<x-navbar user ={{ $user }}/>
-@include('components.home');
+<x-navbar name='{{ $name }}' /> 
+ @include('components.home');
 
 @csrf
-
-
-
- 

@@ -44,7 +44,7 @@ class authcontroller extends Controller
 
         $credentials = $req->only('email','password');
         if(auth()->attempt($credentials)){
-            return redirect()->route('home');
+            return redirect()->route('home',['name'=>auth()->user()->first_name]);
         }
         else{
             return redirect()->route('login');

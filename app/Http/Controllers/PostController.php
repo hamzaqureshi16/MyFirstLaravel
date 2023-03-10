@@ -11,12 +11,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $name;
+    
     public function __invoke()
     {
-        return view('index',[
-             'user'=>auth()->user()
-        ]);
+        
+        return view('index');
     }
 
     public function about()
