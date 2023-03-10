@@ -22,7 +22,7 @@
           
               {{-- @if(config('login.isloggedin')) --}}
             <li class="nav-item">
-              <a class="nav-link"  ><b>{{ Config::get('login.isloggedin') }}</b></a>
+              <a class="nav-link"  ><b>{{ $user->first_name }}</b></a>
             </li>
             {{-- @endif --}}
               

@@ -42,22 +42,30 @@ class authcontroller extends Controller
             'password'=>'required'
         ]);
 
-        $user = User::where('email', $req->email)
-            ->where('first_name', $req->first_name)
-            ->firstOrFail();
-        
-        if(Hash::check($req->password, $user->password)){
-            // $req->session()->put('user',$user);
-            Config::set('login.isloggedin', "true");
-            // return Config::get("login.isloggedin");
-            // Config::set('login.user', $user);
-
-            // return Config::get('login.user')->getRoleNames()->firstOrFail();
+        $credentials = $req->only('email','password');
+        if(auth()->attempt($credentials)){
             return redirect()->route('home');
         }
         else{
             return redirect()->route('login');
         }
+
+        // $user = User::where('email', $req->email)
+        //     ->where('first_name', $req->first_name)
+        //     ->firstOrFail();
+        
+        // if(Hash::check($req->password, $user->password)){
+            // $req->session()->put('user',$user);
+            // Config::set('login.isloggedin', "true");
+            // return Config::get("login.isloggedin");
+            // Config::set('login.user', $user);
+
+            // return Config::get('login.user')->getRoleNames()->firstOrFail();
+        //     return redirect()->route('home');
+        // }
+        // else{
+        //     return redirect()->route('login');
+        // }
     }
 
      

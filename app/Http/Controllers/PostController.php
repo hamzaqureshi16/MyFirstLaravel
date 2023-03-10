@@ -14,7 +14,9 @@ class PostController extends Controller
     public $name;
     public function __invoke()
     {
-        return view('index');
+        return view('index',[
+             'user'=>auth()->user()
+        ]);
     }
 
     public function about()

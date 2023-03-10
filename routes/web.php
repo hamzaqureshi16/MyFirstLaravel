@@ -47,6 +47,7 @@ Route::get('login',function(){
     }
     return redirect()->route('form');
 })->name('login');
+
 Route::view('inaccesible','components.inaccesible')->name('inaccesible');
 Route::view('userpage','components.userpage')->name('userpage');
 Route::view('checkage','components.checkage')->name('checkage')->middleware('age');
