@@ -14,8 +14,7 @@ class PostController extends Controller
     
     public function __invoke()
     {
-        
-        return view('index');
+         return view('index',['name'=>""]);
     }
 
     public function about()
