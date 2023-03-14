@@ -44,6 +44,7 @@ class authcontroller extends Controller
 
         $credentials = $req->only('email','password');
         if(auth()->attempt($credentials)){
+            Config::set('login.user', auth()->user());
             return view('index',['name'=>auth()->user()->first_name]);
         }
         else{

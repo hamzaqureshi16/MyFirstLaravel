@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Config;
 //return view with data as well
 
 Route::get('/',[PostController::class,'__invoke'])->name('home');
+Route::view('/loggedin',"index")->name('loggedin');
 Route::get('/about',[PostController::class,'about'])->name('about');
 Route::get('/home/{id}/{name}',[PostController::class,'show']);
 
@@ -68,7 +69,7 @@ Route::post('update',[usercontroller::class,'update'])->name('update');
 Route::get('delete/{id}',[usercontroller::class,'delete'])->name('delete');
 
 
-Route::view('admin','admin.index');
+Route::view('admin','admin.index')->name('adminhome');
 Route::get('adminDelete/{id}',[usercontroller::class,'delete'])->name('adminDelete');
 
 
